@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>M.U.D - Malicious URL Detector</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+.logo {
+    border-radius:50% 50% 60% 90%;  
+   width:80px;
+   height:90px;
+}
+
+.info-section {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.input-section {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 10px;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.logo-container {
+    overflow: hidden;
+    border-radius: 50%;
+    width: 80px; /* Set the size of the circular logo */
+    height: 80px;
+    margin: 0 auto;
+    float: left;
+}
+abbr{
+    border-bottom: none !important;
+    text-decoration: none !important;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <img src="data:image/png;base64,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" alt="M.U.D Logo" class="logo">
+        </div>
+        <h1 style="text-align: left;"><abbr title="Malicious URLs Detection">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspM.U.D</abbr></h1>
+    </header>
+
+    <!-- 
+    <section class="info-section">
+        <h2>About Malicious URLs</h2>
+        <p>Malicious URLs can pose a significant threat to your online security. Be aware of the following types:</p>
+        
+        <ul>
+            <li>Phishing URLs</li>
+            <li>Malware Distribution URLs</li>
+            <li>Drive-by Download URLs</li>
+            <li>Spam URLs</li>
+        </ul>
+    </section>Main Content -->
+<br>
+    <h1 style="text-align: center;">Malicious URLs Detection</h1>
+<br>
+<br>
+    <!-- Input Form -->
+    <section class="input-section">
+        <h2>Check a URL</h2>
+        <form action="{{ url_for('index') }}" method="post">
+            <label for="urlInput">Enter URL:</label>
+            <input type="text" id="urlInput" name="urlInput" placeholder="Enter a valid URL" required title="Please enter a valid URL starting with http:// or https://">
+            <button type="submit">Submit</button>
+        </form>
+        {% if result %}
+        <p>Result: {{ result }}</p>
+        {% endif %}
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy;M.U.D. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
