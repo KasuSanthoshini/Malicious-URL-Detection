@@ -33,7 +33,7 @@ Software Requirements
 
 ● Operating System – Windows
 
-● Simulation Tools – Google Collab
+● Simulation Tools – Google Collab/ Visual Studio Code
 
 ● Programming Languages – Python
 
