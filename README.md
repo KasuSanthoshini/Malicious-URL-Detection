@@ -1,2 +1,2 @@
-You can download the dataset from the below link
+You can download the dataset from the link
 https://www.kaggle.com/datasets/sid321axn/malicious-urls-dataset
